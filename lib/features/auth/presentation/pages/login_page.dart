@@ -4,7 +4,6 @@ import 'package:car_care/features/auth/domain/repositories/abstract/i_auth_repos
 import 'package:car_care/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:car_care/features/auth/presentation/bloc/auth_event.dart';
 import 'package:car_care/features/auth/presentation/bloc/auth_state.dart';
-
 import 'package:car_care/features/auth/presentation/widgets/login/login_content.dart';
 import 'package:car_care/features/auth/presentation/widgets/login/login_header.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +29,7 @@ class LoginPage extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('تم تسجيل الدخول بنجاح')),
               );
+              GoRouter.of(context).go(Routes.home);
             } else if (state is AuthFailure) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -39,7 +39,6 @@ class LoginPage extends StatelessWidget {
               );
             }
           },
-
           builder: (context, state) {
             bool isLoading = false;
             bool isValid = false;
@@ -56,7 +55,7 @@ class LoginPage extends StatelessWidget {
                   SafeArea(
                     child: Column(
                       children: [
-                        LoginHeader(),
+                        const LoginHeader(),
                         Expanded(
                           child: LoginContent(
                             formKey: formKey,
@@ -64,9 +63,10 @@ class LoginPage extends StatelessWidget {
                             passwordController: passwordController,
                             onLogin: (isValid && !isLoading)
                                 ? () => context.read<AuthBloc>().add(
-                                    SubmitLogin(),
-                                  )
+                                      SubmitLogin(),
+                                    )
                                 : null,
+                            onForgotPassword: null,
                             onRegister: () {
                               GoRouter.of(context).go(Routes.signup);
                             },

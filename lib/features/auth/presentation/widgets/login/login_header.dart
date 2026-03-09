@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class LoginHeader extends StatelessWidget {
-   LoginHeader({super.key});
+    const LoginHeader({super.key});
   @override
   Widget build(BuildContext context) {
       final strings = context.l10n;

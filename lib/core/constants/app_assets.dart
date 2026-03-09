@@ -8,6 +8,15 @@ class AppAssets {
 
   static const String logoImg = '$_imagesPath/logo.png';
 
+  /// Home page background (artboard)
+  static const String artboardBackground = '$_imagesPath/Artboard 9.png';
+
+  /// App bar logo (CAR CARE)
+  static const String homeAppBarLogo = '$_imagesPath/logo 1 .png';
+
+  /// Maintenance icon for active order card
+  static const String maintenanceIcon = '$_imagesPath/2.png';
+
   // icons
   static const String syrianLogoGoldIcon = '$_iconsPath/syrian_logo_gold.svg';
 

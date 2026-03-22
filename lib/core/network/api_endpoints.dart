@@ -6,5 +6,12 @@ class ApiEndpoints {
   static const String register = '/auth/register';
   static const String logout = '/auth/logout';
     // Vehicle
-  static const String vehicles = '/vehicles';
+      static const String vehicles = '/vehicles';
+      //profile
+ static const String updateprofile = '/profile';
+  static const String updatepassword = '/profile/password';
+  static const String updateavatar = '/profile/avatar';
+  static const String deletavatar = '/profile/avatar';
+  static const String deletprofile = '/profile';
+   static const String showprofile = '/auth/me';
 }

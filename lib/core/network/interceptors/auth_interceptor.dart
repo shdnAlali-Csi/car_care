@@ -172,7 +172,8 @@ class AuthInterceptor extends Interceptor {
         method: requestOptions.method,
         headers: {
           ...requestOptions.headers,
-          'Authorization': 'Bearer $accessToken',
+           'Authorization': 'Bearer $accessToken',
+            
         },
       ),
       cancelToken: requestOptions.cancelToken,

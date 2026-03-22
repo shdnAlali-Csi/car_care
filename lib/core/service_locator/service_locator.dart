@@ -5,6 +5,10 @@ import 'package:car_care/core/network/api_service.dart';
 import 'package:car_care/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:car_care/features/auth/domain/repositories/abstract/i_auth_repository.dart';
 import 'package:car_care/features/auth/domain/repositories/implementation/auth_repo_impl.dart';
+import 'package:car_care/features/profile/data/data_sources/profile_remote_data_source.dart';
+import 'package:car_care/features/profile/domain/repositories/abstract/i_profile_repository.dart';
+import 'package:car_care/features/profile/domain/repositories/implementation/profile_repo_impl.dart';
+import 'package:car_care/features/profile/presentation/cubit/show_profile_cubit/show_profile_cubit.dart';
 import 'package:car_care/features/vehicle/data/data_sources/vehicle_remote_data_source.dart';
 import 'package:car_care/features/vehicle/domain/repositories/abstract/i_vehicle_repository.dart';
 import 'package:car_care/features/vehicle/domain/repositories/implementation/vehicle_repos_impl.dart';
@@ -53,6 +57,16 @@ Future<void> setupServiceLocator() async {
     )
     ..registerFactory<VehicleCubit>(
       () => VehicleCubit(getIt<IVehicleRepository>()),
-    );
+    )
+    // Profile
+    ..registerLazySingleton<ProfileRemoteDataSource>(
+  () => ProfileRemoteDataSource(getIt<ApiService>()),
+)
+..registerLazySingleton<IProfileRepository>(
+  () => ProfileRepositoryImpl(getIt<ProfileRemoteDataSource>()),
+)
+..registerFactory<ShowProfileCubit>(
+  () => ShowProfileCubit(getIt<IProfileRepository>()),
+);
 
 }

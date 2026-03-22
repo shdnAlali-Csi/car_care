@@ -38,7 +38,7 @@ class ApiService {
   /// PUT request
   Future<Map<String, dynamic>> put({
     required String endPoint,
-    required String id,
+     String? id,
     dynamic data,
   }) async {
     return _performRequest(
@@ -49,7 +49,7 @@ class ApiService {
   /// DELETE request
   Future<Map<String, dynamic>> delete({
     required String endPoint,
-    required String id,
+    String? id,
   }) async {
     return _performRequest(
       () => _dio.delete('$endPoint/$id'),

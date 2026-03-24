@@ -40,3 +40,5 @@ class VehicleDetailsPage extends StatelessWidget {
     );
   }
 }
+
+

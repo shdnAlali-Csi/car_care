@@ -12,7 +12,7 @@ import 'package:go_router/go_router.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
-initialLocation: Routes.profile,
+initialLocation: Routes.vehicle_details,
     debugLogDiagnostics: true,
     routes: [
       GoRoute(

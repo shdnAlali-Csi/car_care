@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-import 'package:car_care/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,25 +7,40 @@ class VehicleImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 250.h,
-      width: double.infinity,
-      child: Image.asset(
-        'assets/images/99.png',
-        alignment: Alignment.topCenter,
-        errorBuilder: (context, error, stackTrace) {
-          return Container(
-            height: 250.h,
-            decoration: BoxDecoration(
-              color: AppColors.primary.withValues(alpha: 0.1),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 30.h),
+      child: Center(
+        child: Stack(
+          alignment: Alignment.bottomRight,
+          children: [
+            CircleAvatar(
+              radius: 65.r,
+              backgroundColor: const Color(0xFFE0E0E0),
+              child: Icon(
+                Icons.person,
+                size: 90.sp,
+                color: const Color(0xFFBDBDBD),
+              ),
             ),
-            child: Icon(
-              Icons.image_not_supported_outlined,
-              size: 50.sp,
-              color: AppColors.primary,
+            Positioned(
+              bottom: 5.h,
+              right: 5.w,
+              child: Container(
+                padding: EdgeInsets.all(6.r),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFF29966),
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: 2),
+                ),
+                child: Icon(
+                  Icons.camera_alt,
+                  color: Colors.white,
+                  size: 18.sp,
+                ),
+              ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }

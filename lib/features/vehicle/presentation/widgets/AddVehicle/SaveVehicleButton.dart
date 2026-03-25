@@ -3,7 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SaveVehicleButton extends StatelessWidget {
-  const SaveVehicleButton({super.key});
+  const SaveVehicleButton({
+    super.key,
+    required this.onPressed,
+    required this.isLoading,
+  });
+
+  final VoidCallback? onPressed;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +18,7 @@ class SaveVehicleButton extends StatelessWidget {
       width: double.infinity,
       height: 54.h,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onPressed, 
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color(0xFFF29966),
           foregroundColor: Colors.white,
@@ -21,7 +28,7 @@ class SaveVehicleButton extends StatelessWidget {
           ),
         ),
         child: Text(
-          'حفظ المركبة',
+          isLoading ? 'جارٍ الحفظ...' : 'حفظ المركبة',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,

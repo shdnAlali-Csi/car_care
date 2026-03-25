@@ -1,4 +1,9 @@
-import 'package:car_care/features/profile/presentation/pages/change_passwordpage.dart';
+import 'package:car_care/features/maintenance/requests/presentation/pages/requests_page.dart';
+import 'package:car_care/features/maintenance/statistics/presentation/pages/statistics_page.dart';
+import 'package:car_care/features/maintenance/jobs/presentation/pages/jobs_page.dart';
+import 'package:car_care/features/maintenance/quotations/presentation/pages/quotations_page.dart';
+import 'package:car_care/features/maintenance/availability/presentation/pages/availability_page.dart';
+import 'package:car_care/features/technician_profile/presentation/pages/technician_profile_page.dart';
 import 'package:car_care/features/vehicle/presentation/pages/vehicle_details_page.dart';
 import 'package:car_care/features/vehicle/presentation/pages/add_vehicle_page.dart';
 import 'package:car_care/features/vehicle/presentation/pages/my_vehicles_page_page.dart';
@@ -63,7 +68,36 @@ class AppRouter {
           return VehicleDetailsPage(vehicleId: vehicleId);
         },
       ),
-     
-    ],
+            GoRoute(
+        path: Routes.technician_profile,
+        name: '/technician_profile',
+        builder: (context, state) => const TechnicianProfilePage(),
+      ),
+            GoRoute(
+        path: Routes.availability,
+        name: '/availability',
+        builder: (context, state) => const AvailabilityPage(),
+      ),
+            GoRoute(
+        path: Routes.quotations,
+        name: '/quotations',
+        builder: (context, state) => const QuotationsPage(),
+      ),
+            GoRoute(
+        path: Routes.jobs,
+        name: '/jobs',
+        builder: (context, state) => const JobsPage(),
+      ),
+            GoRoute(
+        path: Routes.statistics,
+        name: '/statistics',
+        builder: (context, state) => const StatisticsPage(),
+      ),
+            GoRoute(
+        path: Routes.requests,
+        name: '/requests',
+        builder: (context, state) => const RequestsPage(),
+      ),
+      ],
   );
 }

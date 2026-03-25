@@ -1,45 +1,84 @@
 // ignore_for_file: file_names
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class VehicleImageWidget extends StatelessWidget {
-  const VehicleImageWidget({super.key});
+  const VehicleImageWidget({
+    super.key,
+    required this.imagePath,
+    required this.onPickImage,
+  });
+
+  final String? imagePath;
+  final VoidCallback onPickImage;
 
   @override
   Widget build(BuildContext context) {
+    final hasImage = imagePath != null && imagePath!.isNotEmpty;
+
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 30.h),
-      child: Center(
-        child: Stack(
-          alignment: Alignment.bottomRight,
-          children: [
-            CircleAvatar(
-              radius: 65.r,
-              backgroundColor: const Color(0xFFE0E0E0),
-              child: Icon(
-                Icons.person,
-                size: 90.sp,
-                color: const Color(0xFFBDBDBD),
+      padding: EdgeInsets.symmetric(vertical: 24.h),
+      child: InkWell(
+        onTap: onPickImage,
+        borderRadius: BorderRadius.circular(16.r),
+        child: Container(
+          height: 170.h,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.r),
+            border: Border.all(color: const Color(0xFF0C5D6E).withOpacity(0.45), width: 1.2),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.04),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
               ),
-            ),
-            Positioned(
-              bottom: 5.h,
-              right: 5.w,
-              child: Container(
-                padding: EdgeInsets.all(6.r),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFF29966),
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2),
-                ),
-                child: Icon(
-                  Icons.camera_alt,
-                  color: Colors.white,
-                  size: 18.sp,
+            ],
+          ),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16.r),
+                  child: hasImage
+                      ? Image.file(File(imagePath!), fit: BoxFit.cover)
+                      : Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.directions_car_filled_outlined, size: 52.sp, color: Colors.grey.shade500),
+                              SizedBox(height: 10.h),
+                              Text(
+                                'أضف صورة المركبة',
+                                style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w900, color: Colors.grey.shade700),
+                              ),
+                              SizedBox(height: 4.h),
+                              Text(
+                                'اضغط لاختيار صورة',
+                                style: TextStyle(fontSize: 13.sp, color: Colors.grey.shade600),
+                              ),
+                            ],
+                          ),
+                        ),
                 ),
               ),
-            ),
-          ],
+              Positioned(
+                bottom: 10.h,
+                right: 10.w,
+                child: Container(
+                  padding: EdgeInsets.all(10.r),
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFF29966),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(Icons.camera_alt, color: Colors.white, size: 20.sp),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -13,7 +13,12 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsetsDirectional.only(start: 20.w, end: 20.w, top: 16.h, bottom: 16.h),
+      padding: EdgeInsetsDirectional.only(
+        start: 20.w,
+        end: 20.w,
+        top: 16.h,
+        bottom: 16.h,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -35,13 +40,13 @@ class HomeBody extends StatelessWidget {
                 ),
               ],
             ),
-            child:ServicesGrid(
-  onItemPressed: (index) {
-    if (index == 0) {
-      context.go(Routes.my_vehicles_page);
-    }
-  },
-),
+            child: ServicesGrid(
+              onItemPressed: (index) {
+                if (index == 0) {
+                  context.go(Routes.my_vehicles_page);
+                }
+              },
+            ),
           ),
           SizedBox(height: 16.h),
         ],
@@ -112,13 +117,11 @@ class _ActiveOrderCard extends StatelessWidget {
                 ),
                 child: Image.asset(
                   color: Colors.white,
-                 width: 65,
+                  width: 65,
                   AppAssets.maintenanceIcon,
                   fit: BoxFit.contain,
-                  errorBuilder: (_, __, ___) => const Icon(
-                    Icons.build,
-                    color: Colors.white,
-                  ),
+                  errorBuilder: (_, __, ___) =>
+                      const Icon(Icons.build, color: Colors.white),
                 ),
               ),
               SizedBox(width: 12.w),
@@ -145,11 +148,7 @@ class _ActiveOrderCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(
-                Icons.arrow_back_ios_new,
-                size: 16.sp,
-                color: Colors.white,
-              ),
+              Icon(Icons.arrow_back_ios_new, size: 16.sp, color: Colors.white),
             ],
           ),
           SizedBox(height: 10.h),

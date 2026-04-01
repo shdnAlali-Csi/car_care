@@ -1,4 +1,4 @@
-
+import 'package:car_care/features/maintenance/user_requests/domain/entities/vehicle_entity.dart';
 import 'package:car_care/features/technician/technician_statistics/presentation/pages/technician_statistics_page.dart';
 import 'package:car_care/features/technician/technician_jobs/presentation/pages/technician_jobs_page.dart';
 import 'package:car_care/features/technician/technician_quotations/presentation/pages/technician_quotations_page.dart';
@@ -22,6 +22,7 @@ import 'package:car_care/features/auth/presentation/pages/register_page.dart';
 import 'package:car_care/features/home/presentation/pages/home_page.dart';
 import 'package:car_care/features/home/presentation/widgets/home_bottom_nav_bar.dart';
 import 'package:car_care/features/user_profile/presentation/pages/profile_setup_page.dart';
+import 'package:car_care/features/vehicle/presentation/widgets/UpdateVehicle/UpdateVehiclePage.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -70,7 +71,7 @@ class AppRouter {
         name: '/profile_setup',
         builder: (context, state) => const ProfileSetupPage(),
       ),
-       GoRoute(
+      GoRoute(
         path: Routes.changepasswordpage,
         name: '/change_password',
         builder: (context, state) => const ChangePasswordPage(),
@@ -93,62 +94,62 @@ class AppRouter {
           return VehicleDetailsPage(vehicleId: vehicleId);
         },
       ),
+
       GoRoute(
-        path: Routes.maintenanceHistory,
-        name: '/maintenanceHistory',
+        path: Routes.updateVehicle,
+        name: Routes.updateVehicle,
         builder: (context, state) {
           final vehicleId = state.extra as int;
-          return MaintenanceHistoryPage(vehicleId: vehicleId);
+          return UpdateVehiclePage(vehicleId: vehicleId);
         },
       ),
-            GoRoute(
+      GoRoute(
         path: Routes.technicianprofile,
         name: '/technician_profile',
         builder: (context, state) => const TechnicianProfilePage(),
       ),
-            
-            GoRoute(
+
+      GoRoute(
         path: Routes.quotations,
         name: '/quotations',
         builder: (context, state) => const QuotationsPage(),
       ),
-            
-            GoRoute(
+
+      GoRoute(
         path: Routes.statistics,
         name: '/statistics',
         builder: (context, state) => const StatisticsPage(),
       ),
-            GoRoute(
+      GoRoute(
         path: Routes.requests,
         name: '/requests',
         builder: (context, state) => const RequestsPage(),
       ),
-            GoRoute(
+      GoRoute(
         path: Routes.rate_job,
         name: '/rate_job',
         builder: (context, state) => const RateJobPage(),
       ),
-            GoRoute(
+      GoRoute(
         path: Routes.technician_requests,
         name: '/technician_requests',
         builder: (context, state) => const TechnicianRequestsPage(),
       ),
-            GoRoute(
+      GoRoute(
         path: Routes.technician_quotations,
         name: '/technician_quotations',
         builder: (context, state) => const TechnicianQuotationsPage(),
       ),
-            GoRoute(
+      GoRoute(
         path: Routes.technician_jobs,
         name: '/technician_jobs',
         builder: (context, state) => const TechnicianJobsPage(),
       ),
-            GoRoute(
+      GoRoute(
         path: Routes.technician_statistics,
         name: '/technician_statistics',
         builder: (context, state) => const TechnicianStatisticsPage(),
       ),
-   
-      ],
+    ],
   );
 }

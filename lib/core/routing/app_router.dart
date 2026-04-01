@@ -1,3 +1,5 @@
+import 'package:car_care/features/orders/presentation/pages/order_details_page.dart';
+import 'package:car_care/features/orders/presentation/pages/orders_page.dart';
 
 import 'package:car_care/features/technician/technician_statistics/presentation/pages/technician_statistics_page.dart';
 import 'package:car_care/features/technician/technician_jobs/presentation/pages/technician_jobs_page.dart';
@@ -122,6 +124,20 @@ class AppRouter {
         path: Routes.requests,
         name: '/requests',
         builder: (context, state) => const RequestsPage(),
+      ),
+      GoRoute(
+        path: Routes.orders,
+        name: '/orders',
+        builder: (context, state) => const OrdersPage(),
+      ),
+      GoRoute(
+        path: Routes.order_details,
+        name: '/order_details',
+        builder: (context, state) {
+          final extra = state.extra;
+          final id = extra is String ? extra : null;
+          return OrderDetailsPage(orderId: id);
+        },
       ),
             GoRoute(
         path: Routes.rate_job,

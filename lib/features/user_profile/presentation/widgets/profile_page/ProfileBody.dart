@@ -2,6 +2,8 @@
 import 'package:car_care/core/routing/routes.dart';
 import 'package:car_care/core/theme/app_colors.dart';
 import 'package:car_care/core/widgets/buttons/app_button_widget.dart';
+import 'package:car_care/core/widgets/loding.dart';
+import 'package:car_care/features/user_profile/presentation/pages/change_passwordpage.dart';
 import 'package:car_care/features/user_profile/presentation/widgets/profile_setup/ProfileAvatar.dart';
 import 'package:car_care/features/user_profile/presentation/widgets/profile_page/ProfileInfoCard.dart';
 import 'package:car_care/features/user_profile/presentation/cubit/show_profile_cubit/show_profile_cubit.dart';
@@ -17,9 +19,9 @@ class ProfileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ShowProfileCubit, ShowProfileState>(
       builder: (context, state) {
-        // 🔹 loading
+        // loading
         if (state is ShowProfileLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: AppLoadingWidget());
         }
         // 🔹 error
         if (state is ShowProfileError) {

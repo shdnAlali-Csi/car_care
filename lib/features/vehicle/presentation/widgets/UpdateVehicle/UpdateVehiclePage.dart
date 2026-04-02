@@ -2,6 +2,10 @@
 import 'package:car_care/core/service_locator/service_locator.dart';
 import 'package:car_care/core/widgets/app_loading_widget.dart';
 import 'package:car_care/core/widgets/image_background.dart';
+
+import 'package:car_care/core/service_locator/service_locator.dart';
+
+import 'package:car_care/core/widgets/loding.dart';
 import 'package:car_care/features/vehicle/presentation/cubit/vehicle_details_cubit/vehicle_details_cubit.dart';
 import 'package:car_care/features/vehicle/presentation/cubit/vehicle_details_cubit/vehicle_details_state.dart';
 import 'package:car_care/features/vehicle/presentation/widgets/UpdateVehicle/update_vehicle_body.dart';

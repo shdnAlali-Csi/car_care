@@ -5,6 +5,10 @@ import 'package:car_care/core/network/api_service.dart';
 import 'package:car_care/features/auth/data/data_sources/auth_remote_data_source.dart';
 import 'package:car_care/features/auth/domain/repositories/i_auth_repository.dart';
 import 'package:car_care/features/auth/data/repositories/auth_repo_impl.dart';
+import 'package:car_care/features/technician/technician_statistics/data/data_sources/technician_statistics_remote_data_source.dart';
+import 'package:car_care/features/technician/technician_statistics/data/repositories/technician_statistics_repository_impl.dart';
+import 'package:car_care/features/technician/technician_statistics/domain/repositories/i_technician_statistics_repository.dart';
+import 'package:car_care/features/technician/technician_statistics/presentation/cubit/technician_statistics_cubit.dart';
 import 'package:car_care/features/technician/technician_order/data/data_sources/technician_order_remote_data_source.dart';
 import 'package:car_care/features/technician/technician_order/data/repositories/technician_order_repository_impl.dart';
 import 'package:car_care/features/technician/technician_order/domain/repositories/i_order_requests_repository.dart';
@@ -87,10 +91,19 @@ Future<void> setupServiceLocator() async {
     ..registerFactory<VehicleUpdateCubit>(
       () => VehicleUpdateCubit(getIt<IVehicleRepository>()),
     )
-    ..registerFactory<VehicleDeleteCubit>(() => VehicleDeleteCubit(getIt()),
-    )
+    ..registerFactory<VehicleDeleteCubit>(() => VehicleDeleteCubit(getIt()))
     ..registerFactory(
       () => MaintenanceHistoryCubit(getIt<IVehicleRepository>()),
+    )
+    // Technician statistics
+    ..registerLazySingleton<TechnicianStatisticsRemoteDataSource>(
+      () => TechnicianStatisticsRemoteDataSource(getIt()),
+    )
+    ..registerLazySingleton<ITechnicianStatisticsRepository>(
+      () => TechnicianStatisticsRepositoryImpl(getIt()),
+    )
+    ..registerFactory<TechnicianStatisticsCubit>(
+      () => TechnicianStatisticsCubit(getIt()),
     )
     // Profile
     ..registerLazySingleton<ProfileRemoteDataSource>(

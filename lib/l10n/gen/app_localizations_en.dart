@@ -992,6 +992,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get totalRatings => 'Total ratings';
+
+  @override
   String get deleteProfile => 'Delete Profile';
 
   @override

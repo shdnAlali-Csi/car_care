@@ -2052,6 +2052,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Total ratings'**
   String get totalRatings;
+
   /// Title of delete profile dialog
   ///
   /// In en, this message translates to:

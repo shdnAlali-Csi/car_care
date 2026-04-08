@@ -13,39 +13,47 @@ class RatingCard extends StatelessWidget {
   final String averageRating;
   final int totalRatings;
 
+  double get _rating => double.tryParse(averageRating) ?? 0.0;
+
   @override
   Widget build(BuildContext context) {
-    final double rating = double.tryParse(averageRating) ?? 0.0;
+    final rating = _rating.clamp(0.0, 5.0);
 
     return AppBoxContainer(
       child: Padding(
-        padding: EdgeInsets.all(14.w),
+        padding: EdgeInsets.all(16.w),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              'التقييم:',
-              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w700),
-            ),
-            SizedBox(height: 10.h),
             Row(
+              textDirection: TextDirection.rtl,
               children: [
-                _Stars(rating: rating),
-                SizedBox(width: 10.w),
-                Text(
-                  rating.toStringAsFixed(1),
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
+                Container(
+                  width: 40.w,
+                  height: 40.w,
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withOpacity(0.10),
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: Icon(
+                    Icons.star_outline_rounded,
+                    color: AppColors.primary,
+                    size: 22.sp,
                   ),
                 ),
-                const Spacer(),
+                SizedBox(width: 10.w),
                 Text(
-                  '($totalRatings)',
-                  style: TextStyle(fontSize: 13.sp, color: Colors.grey[700]),
+                  'التقييم',
+                  style: TextStyle(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
             ),
+            SizedBox(height: 14.h),
+
+            Center(child: _Stars(rating: rating)),
           ],
         ),
       ),
@@ -59,23 +67,32 @@ class _Stars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final int full = rating.floor().clamp(0, 5);
-    final bool half = (rating - full) >= 0.5 && full < 5;
-    final int empty = 5 - full - (half ? 1 : 0);
+    final full = rating.floor();
+    final half = (rating - full) >= 0.5;
 
     return Row(
-      children: [
-        for (int i = 0; i < full; i++)
-          const Icon(Icons.star, color: AppColors.primary, size: 22),
-        if (half)
-          const Icon(Icons.star_half, color: AppColors.primary, size: 22),
-        for (int i = 0; i < empty; i++)
-          Icon(
-            Icons.star_border,
-            color: AppColors.primary.withOpacity(.6),
-            size: 22,
-          ),
-      ],
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(5, (i) {
+        if (i < full) {
+          return Icon(
+            Icons.star_rounded,
+            size: 26.sp,
+            color: AppColors.primary,
+          );
+        }
+        if (i == full && half) {
+          return Icon(
+            Icons.star_half_rounded,
+            size: 26.sp,
+            color: AppColors.primary,
+          );
+        }
+        return Icon(
+          Icons.star_border_rounded,
+          size: 26.sp,
+          color: AppColors.primary,
+        );
+      }),
     );
   }
 }

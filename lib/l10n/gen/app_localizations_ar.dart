@@ -992,6 +992,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get totalRatings => 'عدد التقييمات';
+
+  @override
   String get deleteProfile => 'حذف الحساب';
 
   @override

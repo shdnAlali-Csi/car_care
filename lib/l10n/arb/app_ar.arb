@@ -1603,7 +1603,7 @@
 "@acceptedQuotations": { "description": "عدد عروض الأسعار المقبولة" },
 
 "totalRatings": "عدد التقييمات",
-"@totalRatings": { "description": "عدد التقييمات الكلي" }
+"@totalRatings": { "description": "عدد التقييمات الكلي" },
 
 "deleteProfile": "حذف الحساب",
 "@deleteProfile": {"description":"عنوان حوار حذف الحساب"},

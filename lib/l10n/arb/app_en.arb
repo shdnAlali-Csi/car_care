@@ -1602,9 +1602,8 @@
 "@acceptedQuotations": { "description": "Accepted quotations count" },
 
 "totalRatings": "Total ratings",
-"@totalRatings": { "description": "Total ratings count" }
-}
-,
+"@totalRatings": { "description": "Total ratings count" },
+
 "deleteProfile": "Delete Profile",
 "@deleteProfile": {"description":"Title of delete profile dialog"},
 
@@ -1621,13 +1620,13 @@
 "@enterPhone": {
   "description": "Message shown when the phone field is left empty"
 },
+
 "invalidPhone": "Invalid phone number",
 "@invalidPhone": {
   "description": "Message shown when the phone number is incorrect or incomplete"
 }
 
-
-
-
-
 }
+
+
+

@@ -41,7 +41,7 @@ class AppRouter {
 
   static final GoRouter router = GoRouter(
     navigatorKey: rootNavigatorKey,
-    initialLocation: Routes.orders,
+    initialLocation: Routes.login,
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
@@ -63,7 +63,6 @@ class AppRouter {
                 if (index == 0) {
                   context.go(Routes.home);
                 }
-
               },
             ),
             child: child,
@@ -121,7 +120,6 @@ class AppRouter {
         },
       ),
 
-
       GoRoute(
         path: Routes.updateVehicle,
         name: Routes.updateVehicle,
@@ -158,8 +156,7 @@ class AppRouter {
       ),
       GoRoute(
         path: Routes.statistics,
-        name: '/statistics',
-        builder: (context, state) => const StatisticsPage(),
+        builder: (context, state) => const UserStatisticsPage(),
       ),
       GoRoute(
         path: Routes.requests,

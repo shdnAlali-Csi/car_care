@@ -1,16 +1,31 @@
-# car_care
+# Car Care Project 🚗
 
-A new Flutter project.
+A Flutter-based car care management system developed as part of a team project.  
+The application includes both mobile (Flutter) and web interfaces.
 
-## Getting Started
+## 🔗 Repository
+https://github.com/shdnAlali-Csi/car_care
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🚀 Features
+- Car service management system
+- Maintenance request tracking
+- Responsive UI (Mobile & Web)
+- Clean and user-friendly interface
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 👨‍💻 My Contribution
+- Developed the entire Flutter UI for the project (mobile screens)
+- Built and structured the web UI interface
+- Implemented navigation and main app layouts
+- Designed responsive components for different screen sizes
+- Improved overall UI/UX consistency across the project
+
+---
+
+## 🛠 Tech Stack
+- Flutter
+- Dart
+- Responsive Web UI (Flutter Web)
